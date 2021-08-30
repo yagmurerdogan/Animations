@@ -10,7 +10,8 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
+        android:alpha="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,4 +38,52 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/title_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/play_imageView"
+        app:layout_constraintEnd_toStartOf="@+id/play_imageView"
+        app:layout_constraintStart_toEndOf="@+id/main_imageView"
+        app:layout_constraintTop_toTopOf="@+id/play_imageView" />
+
+    <ImageView
+        android:id="@+id/play_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@+id/close_imageView"
+        app:layout_constraintEnd_toStartOf="@+id/close_imageView"
+        app:layout_constraintTop_toTopOf="@+id/close_imageView"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+
+    <ImageView
+        android:id="@+id/close_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@id/main_container"
+        app:layout_constraintEnd_toEndOf="@id/main_container"
+        app:layout_constraintTop_toTopOf="@id/main_container"
+        app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    <ImageView
+        android:id="@+id/main_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/image_content_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/main_container"
+        app:layout_constraintStart_toStartOf="@id/main_container"
+        app:layout_constraintTop_toTopOf="@id/main_container"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="54dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
