@@ -1,5 +1,6 @@
 package com.yagmurerdogan.weathermotionlayout
 
+import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,7 +20,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.startButton.setOnClickListener {
             Log.e("Clicked", "Start")
+            startAlphaAnimation()
         }
 
+    }
+
+    fun startAlphaAnimation() {
+        val alphaAnim = ObjectAnimator.ofFloat(
+            binding.weatherTextView,
+            "alpha",
+            1.0f,
+            0.0f
+        ).apply {
+            duration = 2000
+        }
+        alphaAnim.start()
     }
 }
