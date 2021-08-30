@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
 
 
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:alpha="0"
+        android:contentDescription="@string/image_content_description"
         app:layout_constraintBottom_toBottomOf="@+id/close_imageView"
         app:layout_constraintEnd_toStartOf="@+id/close_imageView"
         app:layout_constraintTop_toTopOf="@+id/close_imageView"
@@ -69,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:alpha="0"
+        android:contentDescription="@string/image_content_description"
         app:layout_constraintBottom_toBottomOf="@id/main_container"
         app:layout_constraintEnd_toEndOf="@id/main_container"
         app:layout_constraintTop_toTopOf="@id/main_container"
@@ -86,4 +89,4 @@
         app:srcCompat="@drawable/ic_launcher_background"
         tools:layout_editor_absoluteX="58dp"
         tools:layout_editor_absoluteY="54dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
