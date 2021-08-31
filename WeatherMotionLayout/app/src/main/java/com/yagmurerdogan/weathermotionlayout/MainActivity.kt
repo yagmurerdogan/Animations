@@ -19,15 +19,16 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.startButton.setOnClickListener {
-            //startAnim(createAlphaAnimation())
+            startAnim(createAlphaAnimation())
+            startAnim(createTranslationAnimation())
             startAnimSet(
                 createScaleXAnimation(),
                 createScaleYAnimation(),
                 createRotateAnimation()
             )
-
         }
     }
+
     private fun createAlphaAnimation(): ObjectAnimator {
         val alphaAnim = ObjectAnimator.ofFloat(
             binding.weatherTextView,
@@ -40,7 +41,19 @@ class MainActivity : AppCompatActivity() {
         return alphaAnim
     }
 
-    private fun createRotateAnimation() : ObjectAnimator {
+    private fun createTranslationAnimation(): ObjectAnimator {
+        val transAnim = ObjectAnimator.ofFloat(
+            binding.startButton,
+            "translationY",
+            0.0f,
+            -150.0f
+            ).apply {
+            duration = 3000
+        }
+        return transAnim
+    }
+
+    private fun createRotateAnimation(): ObjectAnimator {
         val rotateAnim = ObjectAnimator.ofFloat(
             binding.cloudImageView,
             "rotation",
