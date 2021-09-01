@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Car Animation</string>
+    <string name="button_text">Let\'s Go</string>
+    <string name="just_bored">Just Bored!</string>
+    <string name="image_description">image</string>
+</resources>
