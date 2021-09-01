@@ -4,6 +4,16 @@
 Animation samples with motion layout and object animator 🦹🏻‍♀️
 </h4>
 
+<h1 align="center"> Car Animation with Object Animator 👀 </h1>
+
+<h4 align="center">
+🎀  I've created this project by myself. I will write a blog about it soon.
+</h4></br>
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/47380312/131627118-94d239f3-70be-49eb-a978-b44b4e065c03.gif" width="32%"/>
+</p>
+
 <h1 align="center"> YouTube Motion Layout 👀 </h1>
 
 <h4 align="center">
