@@ -1,4 +1,4 @@
-<h1 align="center"> 💕 Motion Layout 💕 </h1>
+<h1 align="center"> 💕 Animations 💕 </h1>
 
 <h4 align="center">
 Animation samples with motion layout and object animator 🦹🏻‍♀️
