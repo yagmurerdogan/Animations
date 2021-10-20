@@ -17,30 +17,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
+
             startAnimSet(
-                createInfiniteAlphaAnimation(binding.nightLayout, 4000, 0.0f, 1.0f),
                 createAlphaAnimation(binding.button, 1000, 1.0f, 0.0f),
                 createAlphaAnimation(binding.textView, 1000, 1.0f, 0.0f),
-                repeatTransYAnim(binding.carImageView, 4000, -130.0f),
-                createInfiniteScaleXAnimation(binding.carImageView, 4000, 0.0f),
-                createInfiniteScaleYAnimation(binding.carImageView, 4000, 0.0f),
-                createAlphaAnimation(binding.moonImageView, 4000, 0.0f, 1.0f),
-                createInfiniteRotateAnimation(binding.sunImageView, 4000, 360.0f),
-                createInfiniteTransXAnimation(binding.cloudImageView, 4000, -180.0f),
-                createInfiniteTransXAnimation(binding.cloudImageView2, 4000, -180.0f),
-                createInfiniteTransXAnimation(binding.cloudImageView3, 4000, -180.0f)
             )
+
+            animateCar(
+                repeatTransYAnim(binding.carImageView),
+                createInfiniteScaleXAnimation(binding.carImageView),
+                createInfiniteScaleYAnimation(binding.carImageView),
+            )
+
+            animateClouds(
+                binding.cloudImageView,
+                binding.cloudImageView2,
+                binding.cloudImageView3
+            )
+
             createSequentialAnim(
-                4000,
-                createInfiniteAlphaAnimation(binding.sunImageView, 4000, 1.0f, 0.0f),
-                createInfiniteAlphaAnimation(binding.moonImageView, 4000, 0.0f, 1.0f)
+                createInfiniteRotateAnimation(binding.sunImageView),
+                createInfiniteAlphaAnimation(binding.nightLayout, 0.0f, 1.0f),
+                createInfiniteAlphaAnimation(binding.sunImageView, 1.0f, 0.0f),
+                createInfiniteAlphaAnimation(binding.moonImageView, 0.0f, 1.0f)
             )
         }
     }
 
-    private fun createSequentialAnim(time: Long, vararg anims: ObjectAnimator) {
+    private fun createSequentialAnim(vararg anims: ObjectAnimator) {
         val multiple = AnimatorSet().apply {
-            duration = time
             for (anim in anims) {
                 playSequentially(anim)
             }
@@ -48,16 +53,20 @@ class MainActivity : AppCompatActivity() {
         multiple.start()
     }
 
-    private fun repeatTransYAnim(view: View, time: Long, endValue: Float): ObjectAnimator {
+    private fun repeatTransYAnim(
+        view: View,
+        time: Long = 4000L,
+        endValue: Float = -130F
+    ): ObjectAnimator {
         val repeat = ObjectAnimator.ofFloat(
             view,
-            "translationY",
-            0.0f,
+            TRANSLATION_Y,
+            1.0f,
             endValue
         ).apply {
             duration = time
             repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.RESTART
+            repeatMode = ObjectAnimator.REVERSE
         }
         return repeat
     }
@@ -70,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     ): ObjectAnimator {
         val alphaAnim = ObjectAnimator.ofFloat(
             view,
-            "alpha",
+            ALPHA,
             startValue,
             endValue
         ).apply {
@@ -81,17 +90,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun createInfiniteAlphaAnimation(
         view: View,
-        time: Long,
         startValue: Float,
         endValue: Float
     ): ObjectAnimator {
         val alphaAnim = ObjectAnimator.ofFloat(
             view,
-            "alpha",
+            ALPHA,
             startValue,
             endValue
         ).apply {
-            duration = time
+            duration = 4000L
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }
@@ -100,12 +108,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun createInfiniteTransXAnimation(
         view: View,
-        time: Long,
-        endValue: Float
+        time: Long = 4000L,
+        endValue: Float = -180.0f
     ): ObjectAnimator {
         val transAnim = ObjectAnimator.ofFloat(
             view,
-            "translationX",
+            TRANSLATION_X,
             0.0f,
             endValue
         ).apply {
@@ -118,12 +126,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun createInfiniteRotateAnimation(
         view: View,
-        time: Long,
-        endValue: Float
+        time: Long = FOUR_SECONDS,
+        endValue: Float = 360.0f
     ): ObjectAnimator {
         val rotateAnim = ObjectAnimator.ofFloat(
             view,
-            "rotation",
+            ROTATION,
             0.0f,
             endValue
         ).apply {
@@ -134,10 +142,14 @@ class MainActivity : AppCompatActivity() {
         return rotateAnim
     }
 
-    private fun createScaleYAnimation(view: View, time: Long, endValue: Float): ObjectAnimator {
+    private fun createScaleYAnimation(
+        view: View,
+        time: Long,
+        endValue: Float
+    ): ObjectAnimator {
         val scaleYAnim = ObjectAnimator.ofFloat(
             view,
-            "scaleY",
+            SCALE_Y,
             1.0f,
             endValue
         ).apply {
@@ -148,12 +160,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun createInfiniteScaleYAnimation(
         view: View,
-        time: Long,
-        endValue: Float
+        time: Long = FOUR_SECONDS,
+        endValue: Float = 0.5f
     ): ObjectAnimator {
         val scaleYAnim = ObjectAnimator.ofFloat(
             view,
-            "scaleY",
+            SCALE_Y,
             1.0f,
             endValue
         ).apply {
@@ -166,12 +178,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun createInfiniteScaleXAnimation(
         view: View,
-        time: Long,
-        endValue: Float
+        time: Long = FOUR_SECONDS,
+        endValue: Float = 0.5f
     ): ObjectAnimator {
         val scaleXAnim = ObjectAnimator.ofFloat(
             view,
-            "scaleX",
+            SCALE_X,
             1.0f,
             endValue
         ).apply {
@@ -192,5 +204,32 @@ class MainActivity : AppCompatActivity() {
             animationSet.playTogether(anim)
         }
         animationSet.start()
+    }
+
+    private fun animateClouds(vararg views: View) {
+        val animationSet = AnimatorSet()
+        for (view in views) {
+            animationSet.playTogether(createInfiniteTransXAnimation(view))
+        }
+        animationSet.start()
+    }
+
+    private fun animateCar(vararg anims: ObjectAnimator) {
+        val animationSet = AnimatorSet()
+        for (anim in anims) {
+            animationSet.playTogether(anim)
+        }
+        animationSet.start()
+    }
+
+
+    companion object {
+        const val SCALE_X = "scaleX"
+        const val SCALE_Y = "scaleY"
+        const val ROTATION = "rotation"
+        const val ALPHA = "alpha"
+        const val TRANSLATION_Y = "translationY"
+        const val TRANSLATION_X = "translationX"
+        const val FOUR_SECONDS = 4000L
     }
 }
