@@ -222,7 +222,6 @@ class MainActivity : AppCompatActivity() {
         animationSet.start()
     }
 
-
     companion object {
         const val SCALE_X = "scaleX"
         const val SCALE_Y = "scaleY"
