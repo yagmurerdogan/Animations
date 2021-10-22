@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             )
 
             animateCar(
-                repeatTransYAnim(binding.carImageView),
+                createTransYAnim(binding.carImageView),
                 createInfiniteScaleXAnimation(binding.carImageView),
                 createInfiniteScaleYAnimation(binding.carImageView),
             )
@@ -53,12 +53,12 @@ class MainActivity : AppCompatActivity() {
         multiple.start()
     }
 
-    private fun repeatTransYAnim(
+    private fun createTransYAnim(
         view: View,
-        time: Long = 4000L,
+        time: Long = FOUR_SECONDS,
         endValue: Float = -130F
     ): ObjectAnimator {
-        val repeat = ObjectAnimator.ofFloat(
+        val transYAnim = ObjectAnimator.ofFloat(
             view,
             TRANSLATION_Y,
             1.0f,
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }
-        return repeat
+        return transYAnim
     }
 
     private fun createAlphaAnimation(
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             startValue,
             endValue
         ).apply {
-            duration = 4000L
+            duration = FOUR_SECONDS
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }
