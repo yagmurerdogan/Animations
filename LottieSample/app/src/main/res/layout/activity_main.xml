@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="halloween.json"
-        app:lottie_loop="true" />
+        app:lottie_loop="true"
+        app:lottie_url="https://assets5.lottiefiles.com/packages/lf20_xlkigwme.json" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
