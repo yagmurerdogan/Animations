@@ -19,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
 
             startAnimSet(
-                createAlphaAnimation(binding.button, 1000, 1.0f, 0.0f),
-                createAlphaAnimation(binding.textView, 1000, 1.0f, 0.0f),
+                createAlphaAnimation(binding.button),
+                createAlphaAnimation(binding.textView)
             )
 
             animateCar(
                 createTransYAnim(binding.carImageView),
                 createInfiniteScaleXAnimation(binding.carImageView),
-                createInfiniteScaleYAnimation(binding.carImageView),
+                createInfiniteScaleYAnimation(binding.carImageView)
             )
 
             animateClouds(
@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
             createSequentialAnim(
                 createInfiniteRotateAnimation(binding.sunImageView),
-                createInfiniteAlphaAnimation(binding.nightLayout, 0.0f, 1.0f),
-                createInfiniteAlphaAnimation(binding.sunImageView, 1.0f, 0.0f),
-                createInfiniteAlphaAnimation(binding.moonImageView, 0.0f, 1.0f)
+                createInfiniteAlphaAnimation(binding.nightLayout, INVISIBLE, VISIBLE),
+                createInfiniteAlphaAnimation(binding.sunImageView, VISIBLE, INVISIBLE),
+                createInfiniteAlphaAnimation(binding.moonImageView, INVISIBLE, VISIBLE)
             )
         }
     }
@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAlphaAnimation(
         view: View,
-        time: Long,
-        startValue: Float,
-        endValue: Float
+        time: Long = ONE_SECOND,
+        startValue: Float = VISIBLE,
+        endValue: Float= INVISIBLE
     ): ObjectAnimator {
         val alphaAnim = ObjectAnimator.ofFloat(
             view,
@@ -230,5 +230,8 @@ class MainActivity : AppCompatActivity() {
         const val TRANSLATION_Y = "translationY"
         const val TRANSLATION_X = "translationX"
         const val FOUR_SECONDS = 4000L
+        const val ONE_SECOND = 1000L
+        const val VISIBLE = 1.0f
+        const val INVISIBLE = 0.0f
     }
 }
