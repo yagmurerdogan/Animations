@@ -8,7 +8,7 @@ Animation samples with motion layout, object animator and lottie 🦹🏻‍♀�
 
 <h4 align="center">
 🎀  You can create this project step by step with
-<a href="https://www.youtube.com/watch?v=SHJTbFJEJj0&list=PLSrm9z4zp4mHFX6JfhN46g8GR8Cyb7eSH&index=3">Medium Blog!</a>
+<a href="https://yagmurerdgn.medium.com/how-to-use-lottie-animation-on-android-1298dbddf597">Medium Blog!</a>
 </h4></br>
 
 <p align="center">
