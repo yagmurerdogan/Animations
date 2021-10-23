@@ -18,28 +18,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-
-            startAnimSet(
-                createAnim(binding.button, ALPHA, ONE_FLOAT, ZERO_FLOAT, ONE_SECOND),
-                createAnim(binding.textView, ALPHA, ONE_FLOAT, ZERO_FLOAT, ONE_SECOND),
-                createAnim(binding.carImageView, TRANSLATION_Y,ONE_FLOAT,CAR_ROAD, FOUR_SECONDS),
-                createAnim(binding.carImageView, SCALE_X, ONE_FLOAT,HALF_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
-                createAnim(binding.carImageView, SCALE_Y, ONE_FLOAT,HALF_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
-            )
-
-            animateClouds(
-                binding.cloudImageView,
-                binding.cloudImageView2,
-                binding.cloudImageView3
-            )
-
-            startSequentialAnim(
-                createAnim(binding.sunImageView,ROTATION, ZERO_FLOAT, FULL_TOUR, FOUR_SECONDS).makeInfiniteAndReverse(),
-                createAnim(binding.nightLayout, ALPHA, ZERO_FLOAT, ONE_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
-                createAnim(binding.sunImageView, ALPHA, ONE_FLOAT, ZERO_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
-                createAnim(binding.moonImageView, ALPHA, ZERO_FLOAT, ONE_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse()
-            )
+            animateMainActivity()
         }
+    }
+    
+    private fun animateMainActivity() {
+        startAnimSet(
+            createAnim(binding.button, ALPHA, ONE_FLOAT, ZERO_FLOAT, ONE_SECOND),
+            createAnim(binding.textView, ALPHA, ONE_FLOAT, ZERO_FLOAT, ONE_SECOND),
+            createAnim(binding.carImageView, TRANSLATION_Y,ONE_FLOAT,CAR_ROAD, FOUR_SECONDS),
+            createAnim(binding.carImageView, SCALE_X, ONE_FLOAT,HALF_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.carImageView, SCALE_Y, ONE_FLOAT,HALF_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.sunImageView,ROTATION, ZERO_FLOAT, FULL_TOUR, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.nightLayout, ALPHA, ZERO_FLOAT, ONE_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.sunImageView, ALPHA, ONE_FLOAT, ZERO_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.moonImageView, ALPHA, ZERO_FLOAT, ONE_FLOAT, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.cloudImageView, TRANSLATION_X, ZERO_FLOAT, NEGATIVE_HALF_TOUR, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.cloudImageView2, TRANSLATION_X, ZERO_FLOAT, NEGATIVE_HALF_TOUR, FOUR_SECONDS).makeInfiniteAndReverse(),
+            createAnim(binding.cloudImageView3, TRANSLATION_X, ZERO_FLOAT, NEGATIVE_HALF_TOUR, FOUR_SECONDS).makeInfiniteAndReverse(),
+        )
     }
 
     private fun createAnim(
@@ -66,29 +63,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startSequentialAnim(vararg anims: ObjectAnimator) {
-        val multiple = AnimatorSet().apply {
-            for (anim in anims) {
-                playSequentially(anim)
-            }
-        }
-        multiple.start()
-    }
-
-    private fun startAnimSet(vararg anims: ObjectAnimator) {
+    private fun startAnimSet(vararg animations: ObjectAnimator) {
         val animationSet = AnimatorSet()
-        for (anim in anims) {
-            animationSet.playTogether(anim)
-        }
-        animationSet.start()
-    }
-
-    private fun animateClouds(vararg views: View) {
-        val animationSet = AnimatorSet()
-        for (view in views) {
-            animationSet.playTogether(
-                createAnim(view, TRANSLATION_X, ZERO_FLOAT,NEGATIVE_HALF_TOUR, FOUR_SECONDS).makeInfiniteAndReverse()
-            )
+        for (animation in animations) {
+            animationSet.playTogether(animation)
         }
         animationSet.start()
     }
