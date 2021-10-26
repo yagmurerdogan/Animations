@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private fun animateMainActivity() {
         startAnimSet(
             with(binding) {
-                arrayOf(cloudImageView, cloudImageView2, cloudImageView3).forEach { cloudImage ->
+                arrayOf(cloudSmallImage, cloudMediumImage, cloudLargeImage).forEach { cloudImage ->
                     cloudImage.createAnim(TRANSLATION_X, ZERO_FLOAT, NEGATIVE_HALF_TOUR)
                         .makeInfiniteAndReverse()
                 }

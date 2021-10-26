@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SP Resources -->
+    <dimen name="thirty_six_sp">36sp</dimen>
+
+    <!-- DP Resources -->
+    <dimen name="thirty_two_dp">32dp</dimen>
+    <dimen name="one_hundred_dp">100dp</dimen>
+    <dimen name="eighty_six_dp">86dp</dimen>
+    <dimen name="one_hundred_forty_eight_dp">148dp</dimen>
+    <dimen name="seventy_six_dp">76dp</dimen>
+    <dimen name="seventy_two_dp">72dp</dimen>
+    <dimen name="sixty_seven_dp">67dp</dimen>
+    <dimen name="sixty_four_dp">64dp</dimen>
+    <dimen name="fifty_six_dp">56dp</dimen>
+    <dimen name="four_hundred_twenty_eight_dp">428dp</dimen>
+    <dimen name="two_hundred_thirty_two_dp">232dp</dimen>
+    <dimen name="two_hundred_fifty_two_dp">252dp</dimen>
+    <dimen name="one_hundred_ninety_seven_dp">197dp</dimen>
+</resources>
