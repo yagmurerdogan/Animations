@@ -18,7 +18,8 @@ Animation samples with motion layout, object animator and lottie 🦹🏻‍♀�
 <h1 align="center"> Car Animation with Object Animator 👀 </h1>
 
 <h4 align="center">
-🎀  I've created this project by myself. I will write a blog about it soon.
+🎀  I've created this project by myself.
+<a href="hhttps://medium.com/cstech/objectanimator-in-android-42660fa28cb">Read Medium Blog!</a>
 </h4></br>
 
 <p align="center">
